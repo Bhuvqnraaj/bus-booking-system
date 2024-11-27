@@ -1,0 +1,30 @@
+CREATE DATABASE busreservationdb;
+
+USE busreservationdb;
+
+CREATE TABLE users (
+    userId INT AUTO_INCREMENT PRIMARY KEY,
+    userName VARCHAR(100),
+    contactNumber VARCHAR(15)
+);
+
+CREATE TABLE buses (
+    busId INT AUTO_INCREMENT PRIMARY KEY,
+    busName VARCHAR(100),
+    source VARCHAR(100),
+    destination VARCHAR(100),
+    totalSeats INT,
+    availableSeats INT,
+    departureDate DATE
+);
+— select * from buses;
+CREATE TABLE bookings (
+    bookingId INT AUTO_INCREMENT PRIMARY KEY,
+    userId INT,
+    busId INT,
+    seatsBooked INT,
+    bookingDate DATE,
+    FOREIGN KEY (userId) REFERENCES users(userId),
+    FOREIGN KEY (busId) REFERENCES buses(busId)
+);
+— select * from bookings;
